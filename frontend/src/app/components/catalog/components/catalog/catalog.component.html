@@ -1,0 +1,27 @@
+<a href="#" class="open_filter">Фильтры</a>
+<h2 class="section_zag">Каталог насекомых</h2>
+<app-filter></app-filter>
+<article class="article">
+    <div class="article_info">
+        <p>Выбрано видов {{selectedTotal}}</p>
+        <div class="toggle">
+            <a [ngClass]="{'action' : selectedViewMode === 'list'}" class="action"
+                (click)="onChangeViewMode(viewMode.list)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 4H3V6H1V4ZM5 4H19V6H5V4ZM1 9H3V11H1V9ZM5 9H19V11H5V9ZM1 14H3V16H1V14ZM5 14H19V16H5V14Z"
+                        stroke="#E8D4D1" stroke-width="1">
+                    </path>
+                </svg>
+            </a>
+            <a [ngClass]="{'action' : selectedViewMode === 'grid'}" (click)="onChangeViewMode(viewMode.grid)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 4.66667L10 16M15.6667 10L4.33333 10M5 16H15C15.5523 16 16 15.5523 16 15V5C16 4.44772 15.5523 4 15 4H5C4.44772 4 4 4.44772 4 5V15C4 15.5523 4.44772 16 5 16Z"
+                        stroke="#E4CFCB" stroke-width="1.5">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <app-items-list [viewMode]="selectedViewMode"></app-items-list>
+</article>

@@ -1,0 +1,216 @@
+<div class="aside_wrap">
+    <aside class="aside">
+        <a href="#" class="close_filtr"></a>
+        <form [formGroup]="filterForm" class="aside_filter" (ngSubmit)="onSubmitForm()">
+            <div class="filter_block">
+                <div class="block exx">
+                    <h3 class="block_zag">Примеры готовой выборки</h3>
+                    <a href="https://insecta.pro/ru/catalog/101" class="exx_link">Жуки (Coleoptera) окрестностей озера
+                        Эльтон</a>
+                </div>
+            </div>
+            <div class="chapter_wrapp left_accord">
+                <div class="chapter_wrapp_zag">
+                    <h3>Общие параметры</h3>
+                </div>
+                <div class="accordion_wrapper">
+
+                    <p-panel #panelSquad header="Отряд" class="accordion_zag scroll_wrapp"
+                        [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true"
+                        [toggleable]="true">
+                        <ng-template pTemplate="headericons">
+
+                            <button class="p-panel-header-icon p-link mr-2">
+                                <span class="panel-header-icon" [ngClass]="panelSquad.collapsed ? '' : 'open'"></span>
+                            </button>
+                        </ng-template>
+                        <div class="accordion_box troop">
+                            <p-listbox [options]="filterValue.squad.values.options" [selectAll]="selectAll"
+                                formControlName="squadIds" optionLabel="name" [filterPlaceHolder]="'Искать...'"
+                                [style]="{ width: '100%' }" [virtualScroll]="true" [filter]="true"
+                                [virtualScrollItemSize]="26" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+                                [metaKeySelection]="false" [showToggleAll]="false"
+                                [listStyle]="{ 'max-height': '220px' }"></p-listbox>
+                        </div>
+                    </p-panel>
+
+                    <p-panel #panelCountry header="Страна" class="accordion_zag scroll_wrapp"
+                        [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true"
+                        [toggleable]="true">
+                        <ng-template pTemplate="headericons">
+
+                            <button class="p-panel-header-icon p-link mr-2">
+                                <span class="panel-header-icon" [ngClass]="panelCountry.collapsed ? '' : 'open'"></span>
+                            </button>
+                        </ng-template>
+                        <div class="accordion_box troop">
+                            <p-listbox [options]="indexsCountry$ | async" [selectAll]="selectAll"
+                                formControlName="countryIds" optionLabel="caption" [filterPlaceHolder]="'Искать...'"
+                                [style]="{ width: '100%' }" [virtualScroll]="true" [filter]="true"
+                                [virtualScrollItemSize]="26" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+                                [metaKeySelection]="false" [showToggleAll]="false"
+                                [listStyle]="{ 'max-height': '220px' }"></p-listbox>
+                        </div>
+                    </p-panel>
+
+                    <p-panel #panelTaxon header="Произвольный таксон" class="accordion_zag scroll_wrapp"
+                        [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true"
+                        [toggleable]="true">
+                        <ng-template pTemplate="headericons">
+                            <button class="p-panel-header-icon p-link mr-2">
+                                <span class="panel-header-icon" [ngClass]="panelTaxon.collapsed ? '' : 'open'"></span>
+                            </button>
+                        </ng-template>
+                        <p-inputGroup>
+                            <p-autoComplete class="border-right-none" [group]="false" [field]="'caption'"
+                                [suggestions]="itemsTaxon$ | async" [delay]="500" [forceSelection]="false" dataKey="id"
+                                [dropdown]="false" [multiple]="false" [autoHighlight]="false"
+                                [showEmptyMessage]="(itemsTaxon$ | async)?.length === 0"
+                                (completeMethod)="onSearch($event)" formControlName="taxonName"
+                                placeholder="Искать...">
+                            </p-autoComplete>
+                            <button type="button" pButton icon="pi search-icon"
+                                class="p-button-autocomplete border-left-none"></button>
+                        </p-inputGroup>
+
+                    </p-panel>
+                </div>
+            </div>
+            <div class="chapter_wrapp right_accord">
+
+                <div class="chapter_wrapp_zag">
+                    <h3>Дополнительные параметры</h3>
+                    <p>Актуальны не для всех видов насекомых</p>
+                </div>
+
+                <p-panel #panelLength header="Длина переднего крыла" class="accordion_zag scroll_wrapp"
+                    [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true" [toggleable]="true">
+                    <ng-template pTemplate="headericons">
+                        <button class="p-panel-header-icon p-link mr-2">
+                            <span class="panel-header-icon" [ngClass]="panelLength.collapsed ? '' : 'open'"></span>
+                        </button>
+                    </ng-template>
+                    <div class="accordion_box troop">
+                        <div class="range_line">
+                            <div class="input_box" formGroupName="frontFenderLength">
+                                <div class="left">
+                                    <span>от</span>
+                                    <input type="text" formControlName="min" pKeyFilter="num" pInputText />
+                                </div>
+                                <div class="right">
+                                    <span>до</span>
+                                    <input type="text" formControlName="max" pKeyFilter="num" pInputText />
+                                    <i>мм</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+
+                <p-panel #panelColor header="Цвет" class="accordion_zag scroll_wrapp"
+                    [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true" [toggleable]="true">
+                    <ng-template pTemplate="headericons">
+                        <button class="p-panel-header-icon p-link mr-2">
+                            <span class="panel-header-icon" [ngClass]="panelColor.collapsed ? '' : 'open'"></span>
+                        </button>
+                    </ng-template>
+                    <div class="accordion_box">
+                        <p-listbox [options]="filterValue.color.values.options" [selectAll]="selectAll"
+                        formControlName="colorIds" optionLabel="name" [filterPlaceHolder]="'Искать...'"
+                        [style]="{ width: '100%' }" [virtualScroll]="true" [filter]="true"
+                        [virtualScrollItemSize]="26" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+                        [metaKeySelection]="false" [showToggleAll]="false"
+                        [listStyle]="{ 'max-height': '220px' }"></p-listbox>
+                    </div>
+                </p-panel>
+                <p-panel #panelTime header="Время лёта" class="accordion_zag scroll_wrapp"
+                    [transitionOptions]="transitionOptions" [toggler]="'header'" [collapsed]="true" [toggleable]="true">
+                    <ng-template pTemplate="headericons">
+
+                        <button class="p-panel-header-icon p-link mr-2">
+                            <span class="panel-header-icon" [ngClass]="panelTime.collapsed ? '' : 'open'"></span>
+                        </button>
+                    </ng-template>
+                    <div class="range_line" formGroupName="summerTime">
+                        <div class="input_box">
+                            <div class="left">
+                                <span>от</span>
+                                <input type="text" formControlName="min" pKeyFilter="num" pInputText />
+                            </div>
+                            <div class="right">
+                                <span>до</span>
+                                <input type="text" formControlName="max" pKeyFilter="num" pInputText />
+                                <i>мин</i>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+                <p-panel #panelSettings header="Настройка выдачи" class="accordion_wrapper"
+                    formGroupName="settingUpIssuance" [transitionOptions]="transitionOptions" [toggler]="'header'"
+                    [collapsed]="true" [toggleable]="true">
+
+                    <ng-template pTemplate="headericons">
+
+                        <button class="p-panel-header-icon p-link mr-2">
+                            <span class="panel-header-icon" [ngClass]="panelSettings.collapsed ? '' : 'open'"></span>
+                        </button>
+                    </ng-template>
+                    <div class="accordion_box baggage">
+                        <div class="radio_wrap">
+                            <div class="radio_block radio left">
+                                <p-radioButton name="photo" [value]="filterValue.photo.values[0]"
+                                    formControlName="photo"></p-radioButton>
+                                <label for="ingredient4" class="ml-2 margin-left-10">C фото</label>
+
+                            </div>
+                            <div class="radio_block right">
+                                <p-radioButton name="photo" [value]="filterValue.photo.values[1]"
+                                    formControlName="photo"></p-radioButton>
+                                <label for="ingredient4" class="ml-2 margin-left-10">Без фото</label>
+                            </div>
+                        </div>
+                        <h3 class="radio_zag">Размер превью картинок</h3>
+                        <div class="radio_wrap">
+                            <div class="radio_block left">
+
+                                <p-radioButton name="imageSize" value="small"
+                                    formControlName="imageSize"></p-radioButton>
+                                <label for="ingredient4" class="ml-2 margin-left-10">Мелкий</label>
+                            </div>
+                            <div class="radio_block right">
+
+                                <p-radioButton name="imageSize" value="big" formControlName="imageSize"></p-radioButton>
+                                <label for="ingredient4" class="ml-2 margin-left-10">Большой</label>
+                            </div>
+                        </div>
+                        <h3 class="pod_zag">Ракурс/тип иллюстраций:</h3>
+
+                        <p-cascadeSelect formControlName="typeOfIllustrations"
+                            [options]="filterValue.typeOfIllustrations.values.options" optionLabel="name"
+                            optionGroupLabel="name" [optionGroupChildren]="['']" (onShow)="onShow($event)"
+                            (onHide)="onHide($event)"
+                            [style]="{ width: '100%',marginBottom: marginP,transition: '0.3s' }"
+                            placeholder="Select a City"></p-cascadeSelect>
+
+                        <h3 class="select_zag">Сортировать по:</h3>
+
+                        <p-cascadeSelect formControlName="sortBy" [options]="filterValue.sortBy.values.options"
+                            optionLabel="name" optionGroupLabel="name" [optionGroupChildren]="['']"
+                            (onShow)="onShow($event)" (onHide)="onHide($event)"
+                            [style]="{ width: '100%',marginBottom: marginP,transition: '0.3s' }"
+                            placeholder="Select a City"></p-cascadeSelect>
+
+                    </div>
+
+                </p-panel>
+
+
+                <div class="button_line">
+                    <button type="submit">Поиск</button>
+                    <button (click)="onReset()" type="reset">Сбросить</button>
+                </div>
+            </div>
+
+        </form>
+    </aside>
+</div>

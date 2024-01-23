@@ -1,75 +1,50 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { AuthGuard } from './guards/auth.guard';
-import { HomeComponent } from './components/home/home.component';
-import { UsersComponent } from './components/user/users/users.component';
-import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
-import { UpdateUserProfileComponent } from './components/user/update-user-profile/update-user-profile.component';
-import { CreateBlogEntryComponent } from './components/blog-entry/create-blog-entry/create-blog-entry.component';
-import { ViewBlogEntryComponent } from './components/blog-entry/view-blog-entry/view-blog-entry.component';
-
+import { CatalogComponent } from './components/catalog/components/catalog/catalog.component';
+import { GalleryComponent } from './components/gallery/gallery/gallery.component';
+import { ClassificationComponent } from './components/classification/classification/classification.component';
+import { LiteratureComponent } from './components/literature/literature/literature.component';
+import { MapsComponent } from './components/maps/maps/maps.component';
+import { ForumComponent } from './components/forum/forum/forum.component';
+import { ProjectsComponent } from './components/projects/projects/projects.component';
+import { CollectionsComponent } from './components/collections/collections/collections.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ROLE_admin'
-    }
+    path: 'catalog',
+    component: CatalogComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'gallery',
+    component: GalleryComponent
   },
   {
-    path: 'api',
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ROLE_admin'
-    }
+    path: 'classification',
+    component: ClassificationComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
+    path: 'literature',
+    component: LiteratureComponent
   },
   {
-    path: 'users',
-    children: [
-      {
-        path: '',
-        component: UsersComponent
-      },
-      {
-        path: ':id',
-        component: UserProfileComponent
-      },
-    ],
-    canActivate: [AuthGuard]
+    path: 'projects',
+    component: ProjectsComponent
   },
   {
-    path: 'update-profile',
-    component: UpdateUserProfileComponent,
-    canActivate: [AuthGuard]
+    path: 'collections',
+    component: CollectionsComponent
   },
   {
-    path: 'blog-entries/:id',
-    component: ViewBlogEntryComponent
+    path: 'maps',
+    component: MapsComponent
   },
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'create-blog-entry',
-    component: CreateBlogEntryComponent,
-    canActivate: [AuthGuard]
+    path: 'forum',
+    component: ForumComponent
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/',
     pathMatch: 'full'
   }
 ];

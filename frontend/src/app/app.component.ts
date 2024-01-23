@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './services/authentication-service/authentication.service';
-
 
 @Component({
   selector: 'app-root',
@@ -11,7 +9,7 @@ import { AuthenticationService } from './services/authentication-service/authent
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  constructor(private router: Router, private authService: AuthenticationService) {
+  constructor(private router: Router) {
 
   }
   public ngOnInit(): void {
@@ -22,7 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   public logout(): void {
-    this.authService.logout();
     this.navigateTo('login');
   }
 }

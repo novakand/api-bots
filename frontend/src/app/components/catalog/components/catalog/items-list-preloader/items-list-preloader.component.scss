@@ -1,0 +1,76 @@
+:host ::ng-deep {
+.block_wrap {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.block {
+    display: inline-block;
+    width: 100%;
+    max-width: 475px;
+    min-height: 107px;
+    background: transparent !important;
+    overflow: hidden;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.block_img {
+    float: left;
+    width: 22.94%;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+    }
+
+    .big_img {
+        display: none;
+    }
+
+    .mini_img {
+        display: inline-block;
+    }
+}
+
+.block_text {
+    float: right;
+    width: 74.94%;
+    text-align: left;
+
+    .name {
+        float: left;
+        width: 100%;
+        font: 20px/30px "Lora";
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .namber {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+        font: 14px/20px "Lato";
+    }
+
+    .link {
+        float: left;
+        width: 100%;
+        font: 16px/22px "Lato";
+        margin-bottom: 10px;
+
+        a {
+            display: inline-block;
+            border-bottom: 1px solid #FF784D;
+            margin-right: 10px;
+        }
+    }
+}
+
+.p-skeleton {
+    background-color: #f5efef;
+    border-radius: 6px;
+}
+}

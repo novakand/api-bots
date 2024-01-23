@@ -1,0 +1,32 @@
+<div class="block_line" [ngClass]="{'cage_line' : viewMode === 'grid'}">
+    <app-items-list-preloader *ngIf="!(items$ | async)?.length" [viewMode]="viewMode"
+        [count]="rows"></app-items-list-preloader>
+
+    <div *ngFor="let item of items$| async; index as i;">
+        <div class="block_wrap">
+            <div class="block">
+                <div class="block_img">
+                    <img src="./assets/img/catalog_big.jpg" alt="" class="big_img">
+                    <img src="./assets/img/catalog_mini.jpg" class="mini_img" alt="">
+                </div>
+                <div class="block_text">
+                    <h3 class="name">{{item.caption }}</h3>
+                    <p class="namber">{{item.authorYear }}</p>
+                    <div class="link" *ngIf="item?.parents">
+                        <span *ngFor="let parentItem of item?.parents; index as i;">
+                            <a href="#">{{parentItem?.caption }}</a>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="namber_wrap">
+    <div class="namber_line">
+        <p-paginator bindQueryParams (onPageChange)="onPageChange($event)" [rowsPerPageOptions]="[10, 20, 30]" [first]="first" [rows]="rows"
+        [totalRecords]="totalRecords" [showFirstLastIcon]="true" [showCurrentPageReport]="false"
+        currentPageReportTemplate="{first} - {last} of {totalRecords}"></p-paginator>
+    </div>

@@ -1,0 +1,118 @@
+<header class="header">
+    <div class="serch">
+        <div class="content">
+            <form action="#">
+                <input type="text" placeholder="Искать..." class="open_result">
+                <input type="reset" value="" class="close_serch">
+            </form>
+            <div class="serch_result">
+                <div class="box">
+                    <h3>Полное соответствие</h3>
+                    <div class="delivery">
+                        <p><span>Lami</span>ngtoniidae <i>Sen Gupta & Crowson, 1969 [Семейство]</i></p>
+                        <p><span>Lami</span>inae Latreille,<i>1825 [Подсемейство]</i></p>
+                        <p><span>Lami</span>a <i>[Род]</i></p>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>Неполное соответствие</h3>
+                    <div class="delivery">
+                        <p><span>Lami</span>ngtoniidae <i>Sen Gupta & Crowson, 1969 [Семейство]</i></p>
+                        <p>Oreodera quinquetuberculata Drapiez, <i>1820 = </i></p>
+                        <p><span>Lami</span>a 5-tuberculata <i>[Вид]</i></p>
+                        <p><span>Lami</span>inae Latreille,<i>1825 [Подсемейство]</i></p>
+                        <p><span>Lami</span>a <i>[Род]</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header_top">
+        <div class="content">
+            <div class="header_top_block">
+                <div class="logo"><a href="/"><img src="./assets/img/logo.svg" alt=""></a></div>
+                <div class="right">
+                    <p><a href="#">Принять участие</a></p>
+                    <div class="button">
+                        <div class="tongue">
+                            <a href="#" class="action"><span>Rus</span></a>
+                            <a href="#"><span>Eng</span></a>
+                        </div>
+                        <a href="#" class="open_serch"></a>
+                        <button>Войти</button>
+                        <a href="#" class="sandwich collapsed">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header_bottom">
+        <div class="content">
+            <div class="header_bottom_block">
+                <nav class="nav" id="menu">
+                    <div class="select_wrap">
+                        <p-cascadeSelect [(ngModel)]="selected" [options]="options" [optionLabel]="optionLabel"
+                            optionGroupLabel="optionGroupLabel" optionGroupChildren="['']"
+                            [style]="{ minWidth: '14rem', height: '43px' }"></p-cascadeSelect>
+                        <a href="#" class="close_menu">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 9L24 22M8 22L24 9" stroke="#272625" stroke-width="1.5"
+                                    stroke-linecap="square" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="menu">
+                        <li routerLinkActive="action" routerLink="/catalog"><a>Каталог</a></li>
+                        <li routerLinkActive="action" routerLink="/gallery"><a>Галерея</a></li>
+                        <li routerLinkActive="action" routerLink="/classification"><a>Классификация</a></li>
+                        <li routerLinkActive="action" routerLink="/literature"><a>Литература</a></li>
+                        <li routerLinkActive="action" routerLink="/maps"><a>Карты</a></li>
+                        <li routerLinkActive="action" routerLink="/forum"><a>Форум</a></li>
+                        <li class="parent visible_xs"><a href="#">Еще</a>
+                            <ul class="pod_menu">
+                                <li routerLinkActive="action" routerLink="/projects"><a>Проекты</a></li>
+                                <li routerLinkActive="action" routerLink="/collections"><a>Коллекции</a></li>
+                                <li routerLinkActive="action" routerLink="/articles"><a>Статьи</a></li>
+                            </ul>
+                        </li>
+                        <li class="hide_xs"><a href="#">Принять участие</a></li>
+                    </ul>
+                    <div class="button_line hide_xs">
+                        <a href="#">Войти</a>
+                    </div>
+                </nav>
+                <div class="serch_wrapper">
+                    <p-inputGroup class="autocomplete-group">
+                        <p-autoComplete class="border-right-none" [group]="true"
+                            [field]="'caption'" [suggestions]="itemsTaxon$ | async" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" [delay]="500" [forceSelection]="false" dataKey="id"
+                            [dropdown]="false" [multiple]="false" [autoHighlight]="false"
+                            [showEmptyMessage]="(itemsTaxon$ | async)?.length === 0"
+                            [panelStyleClass]="'autocomplete-panel'" (completeMethod)="onSearch($event)"
+                            placeholder="Искать...">
+                            <ng-template let-group pTemplate="group">
+                                <div class="autocomplete-panel-group-label">
+                                    <h3>{{ group.label }}</h3>
+                                </div>
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                <p class="autocomplete-panel-item-label" (click)="goToLink(item.id)">
+                                    <span [innerHTML]="item.caption | highlight: searchText"></span><span></span><i> Sen Gupta & Crowson, 1825[Семейство]</i>
+                                </p>
+                            </ng-template>
+                        </p-autoComplete>
+                        <button type="button" pButton icon="pi search-icon"
+                            class="p-button-autocomplete border-left-none"></button>
+                    </p-inputGroup>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

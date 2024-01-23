@@ -1,0 +1,79 @@
+:host ::ng-deep {
+    .p-paginator {
+        background: transparent;
+        color: #272625;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page {
+        color: #272625;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+        background: transparent;
+        border-color: none;
+        color: #FF784D;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+        background: transparent;
+        border-color: transparent;
+        color: #FF784D;
+    }
+
+    .p-paginator .p-paginator-first,
+    .p-paginator .p-paginator-prev,
+    .p-paginator .p-paginator-next,
+    .p-paginator .p-paginator-last {
+        color: #272625;
+    }
+
+    .p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
+        background: transparent;
+        color: #FF784D;
+    }
+
+    .p-paginator-rpp-options .p-inputtext {
+        border: none;
+        height: 45px;
+    }
+
+    .p-dropdown {
+        background: #ffffff;
+        border: 1px solid #FF784D;
+        transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s;
+        border-radius: 6px
+    }
+
+    .p-dropdown:not(.p-disabled):hover {
+        border-color: #FF784D
+    }
+
+    .p-dropdown:not(.p-disabled).p-focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: none;
+        border-color: #FF784D
+    }
+
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+        margin: 0;
+        padding: 0.75rem 1.25rem;
+        border: 0 none;
+        color: #4b5563;
+        background: transparent;
+        transition: box-shadow 0.2s;
+        border-radius: 0;
+    }
+
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight.p-focus {
+        background: #FF784D;
+    }
+
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+        color: #fff;
+        background: #FF784D;
+    }
+}

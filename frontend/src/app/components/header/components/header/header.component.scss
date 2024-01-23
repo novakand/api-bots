@@ -1,0 +1,89 @@
+:host ::ng-deep {
+
+    .p-autocomplete-empty-message {
+        margin: 0;
+        padding: 0.75rem 1.25rem;
+        border: 0 none;
+        color: #272625;
+        background: transparent;
+        transition: box-shadow 0.2s;
+        border-radius: 0;
+    }
+
+    .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item {
+        color: #272625;
+    }
+
+    .p-inputgroup .p-inputtext,
+    .p-fluid .p-inputgroup .p-inputtext,
+    .p-inputgroup .p-inputwrapper,
+    .p-inputgroup .p-inputwrapper>.p-component {
+        width: 100%;
+    }
+
+    .autocomplete-panel {
+        width: calc(100% + 41px) !important;
+        padding: 0px 16px;
+        box-sizing: border-box;
+        background: #ffffff;
+        max-height: 500px !important;
+    }
+
+    .autocomplete-panel-group-label {
+        font: 18px/25px "Lora";
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .autocomplete-panel-item-label {
+
+        i {
+            font: 14px/28px "Lato";
+        }
+    }
+
+    .highlight {
+        color: #FF3B00;
+    }
+
+    .p-autocomplete-items {
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        font: 18px/28px "Lora";
+        width: 100%;
+    }
+
+    .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item-group {
+        color: #272625 !important;
+    }
+
+    .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item {
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        font: 18px/28px "Lora";
+    }
+
+    .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:not(.p-highlight):not(.p-disabled).p-focus {
+        color: #272625;
+        background: transparent;
+    }
+
+    .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:not(.p-highlight):not(.p-disabled):hover {
+        color: #272625;
+        background: transparent;
+    }
+
+    .autocomplete-group {
+        width: 100%;
+        max-width: 310px;
+        position: relative;
+        height: auto;
+
+    }
+
+    .p-autocomplete-item {
+        white-space: normal;
+    }
+}
